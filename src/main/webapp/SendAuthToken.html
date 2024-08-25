@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AJAX Request with Custom Headers</title>
+    <script>
+        function sendRequestWithHeaders() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', 'submit', true);  // 'submit' is the servlet's URL mapping
+
+            // Set custom request headers
+            xhr.setRequestHeader('Auth-Token', 'admin-token-456');
+            xhr.setRequestHeader('User-Role', 'Admin');
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById('response').innerHTML = `
+                        <p>Response received with status ${xhr.status}</p>
+                        <p>Response Body: ${xhr.responseText}</p>
+                    `;
+                }
+            };
+
+            xhr.send();
+        }
+
+        window.onload = sendRequestWithHeaders;
+    </script>
+</head>
+<body>
+    <h1>AJAX Request with Custom Headers</h1>
+    <div id="response">Sending request...</div>
+</body>
+</html>

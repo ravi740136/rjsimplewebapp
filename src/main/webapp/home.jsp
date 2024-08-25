@@ -17,6 +17,7 @@ while (attributeNames.hasMoreElements()) {
     
     
     <p>Hello, <%= session.getAttribute("username") %>!</p>
+    
     <a href="logout">Logout</a>
 </body>
 </html>
