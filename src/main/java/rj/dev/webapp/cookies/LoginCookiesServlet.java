@@ -17,8 +17,14 @@ public class LoginCookiesServlet extends HttpServlet {
 
     static {
         // Adding some users for testing
-        users.put("admin", "admin123");
-        users.put("user", "user123");
+        users.put("admin", "Admin@123");
+        users.put("user", "User@123");
+    }
+    
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    	// TODO Auto-generated method stub
+    	doPost(req, resp);
     }
 
     @Override
@@ -54,13 +60,13 @@ public class LoginCookiesServlet extends HttpServlet {
             html.append("<html><body>");
             html.append("<h1>Welcome, ").append(username).append("</h1>");
             html.append("<p>Your role: ").append(role).append("</p>");
-            html.append("<a href='logout'>Logout</a>");
+            html.append("<a href='logoutcookie'>Logout</a>");
             html.append("</body></html>");
 
             response.getWriter().write(html.toString());
         } else {
             // Authentication failed, redirect back to the login page with an error message
-            response.sendRedirect("login.jsp?error=invalid_credentials");
+            response.sendRedirect("logincookie.jsp?error=invalid_credentials");
         }
     }
 }

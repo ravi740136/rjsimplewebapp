@@ -23,7 +23,7 @@ public class LogoutCookiesServlet extends HttpServlet {
         response.addCookie(roleCookie);
 
         // Redirect to login page
-        response.sendRedirect("login.jsp");
+        response.sendRedirect("logincookie.jsp");
     }
 }
 
