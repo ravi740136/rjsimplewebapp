@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Asynchronous AJAX Example</title>
+    <script>
+        function makeAsyncRequest() {
+        	var username = document.getElementById("username").value;
+            var xhr = new XMLHttpRequest();
+
+            // Start the request
+            xhr.open("GET", "checkUsername?username=" + username, true); // true indicates async
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById("result").innerHTML = "Asynchronous Response: " + xhr.responseText;
+                }
+            };
+
+            document.getElementById("result").innerHTML = "Request sent asynchronously...";
+
+            // Send the request
+            xhr.send();
+        }
+    </script>
+</head>
+<body>
+    <h2>Asynchronous AJAX Example</h2>
+    
+
+    <form id="usernameForm">
+        <label for="username">Enter Username:</label>
+        <input type="text" id="username" name="username">
+        <button type="button" onclick="makeAsyncRequest()">Check Availability</button>
+    </form>
+    <p id="result"></p>
+
+    
+</body>
+   
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AJAX Example</title>
+    <script type="text/javascript">
+    function checkUsername() {
+    var username = document.getElementById("username").value;
+    document.getElementById("result").innerHTML="";
+    username = encodeURIComponent(username);
+    console.log(username);
+    
+    var xhr = new XMLHttpRequest();
+    //asynchronous is set to false, page becomes unresponsive until response is received
+    //xhr.open("GET", "checkUsername?username=" + username, false);
+    
+    //default value is true
+    xhr.open("GET", "checkUsername?username=" + username, true);
+
+   xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            document.getElementById("result").innerHTML = xhr.responseText;
+        }
+    };
+   // document.getElementById("result").innerHTML = "Sending asynchronous request...";
+
+    xhr.send();
+    
+    //This statement is executed only after response is received, page becomes unresponsive
+   // document.getElementById("result").innerHTML = "response of synchronous request...<br>"
+  //  +"you shall wait until response is received, page is unresponsive "+xhr.responseText;
+}
+    </script> 
+</head>
+<body>
+    <h2>Check Username Availability</h2>
+    <form id="usernameForm">
+        <label for="username">Enter Username:</label>
+        <input type="text" id="username" name="username">
+        <button type="button" onclick="checkUsername()">Check Availability</button>
+        
+    </form>
+    <p id="result"></p>
+
+    
+</body>
+</html>

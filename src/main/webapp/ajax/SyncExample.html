@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Sync Example</title>
+
+<script type="text/javascript">
+
+function callCheck(){
+	document.getElementById("result").innerHTML="Request will be sent synchronously, page becomes unresponsive"
+	setTimeout(checkUsername, 500);
+}
+	function checkUsername() {
+		var username = document.getElementById("username").value;
+		var xhr = new XMLHttpRequest();
+
+		//asynchronous is set to false, page becomes unresponsive until response is received
+		xhr.open("GET", "checkUsername?username=" + username, false);
+		xhr.send();
+
+		//This statement is executed only after response is received, page becomes unresponsive
+		document.getElementById("result").innerHTML = "response of synchronous request...<br>"
+				+ xhr.responseText;
+	}
+</script>
+</head>
+
+<body>
+	<h2>Sync Example</h2>
+	<form>
+	<label for="username">Enter Username:</label>
+        <input type="text" id="username" name="username">
+        <button type="button" onclick="callCheck()">Check Availability</button>
+        
+    </form>
+    <p id="result"></p>
+
+    
+</body>
+</html>
