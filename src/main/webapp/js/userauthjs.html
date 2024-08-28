@@ -1,0 +1,45 @@
+
+<html>
+<head>
+<title>jsuservalidation</title>
+<style>
+.error{
+color:red;
+}
+</style>
+<script type="text/javascript">
+
+function validateLoginForm() {
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+  let errorMessage = "";
+
+  if (username === "") {
+    errorMessage += "\nUsername is required. ";
+  }
+
+  if (password === "") {
+    errorMessage += "\nPassword is required.";
+  }
+
+  if (errorMessage) {
+    document.getElementById("error-message").innerText = errorMessage;
+    return false;
+  }
+  return true;
+}
+
+
+</script>
+</head>
+<body>
+<h1>JS Validation</h1>
+<div id="error-message" class="error"></div>
+<form onsubmit="return validateLoginForm()">
+  <input type="text" id="username" name="username" placeholder="Username"><br>
+  <input type="password" id="password" name="password" placeholder="Password"><br>
+  
+  <button type="submit">Login</button>
+</form>
+</body>
+</html>
