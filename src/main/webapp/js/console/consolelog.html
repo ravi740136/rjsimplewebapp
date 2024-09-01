@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <script type="text/javascript">
+        function validateLogin() {
+        	console.debug("validation started");
+        	
+        	/*const users = [
+        	    { name: "Alice", age: 30 },
+        	    { name: "Bob", age: 25 },
+        	    { name: "Charlie", age: 35 }
+        	];*/
+        	//console.table also failing
+        	//console.table(users);
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            // Log the values to the console
+            console.log("Username:", username);
+            console.log("Password:", password);
+
+            //assert is ausing problems in console window
+//console.assert(username === "admin" , "only admin is allowed");
+            if (username === "admin" && password === "Admin@123") {
+            	console.log("Form submitted successfully.");
+               
+            } else {
+            	 console.error("Username or password is wrong.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Login Pages</h2>
+    <form onsubmit="validateLogin(); return false;">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username"><br><br>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br><br>
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>
