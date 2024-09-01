@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login Page</title>
+    <script type="text/javascript">
+        function handleFocus(field) {
+           field.style.backgroundColor = "#e0f7fa";
+           // field.style.backgroundColor = "red";
+        }
+
+        function handleBlur(field) {
+            field.style.backgroundColor = "";
+        }
+    </script>
+</head>
+<body>
+    <h2>Login</h2>
+    <form action="login" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required onfocus="handleFocus(this)" onblur="handleBlur(this)"><br><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required onfocus="handleFocus(this)" onblur="handleBlur(this)"><br><br>
+        
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>

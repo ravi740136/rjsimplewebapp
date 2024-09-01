@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Alerts Example</title>
+    <script type="text/javascript">
+        // Function to handle an alert
+        function showAlert() {
+            alert("This is an alert message!");
+        }
+
+        // Function to handle a confirm dialog
+        function showConfirm() {
+            var userResponse = confirm("Do you want to continue?");
+            if (userResponse) {
+                alert("User clicked OK");
+            } else {
+                alert("User clicked Cancel");
+            }
+        }
+
+        // Function to handle a prompt dialog
+        function showPrompt() {
+            var userName = prompt("Please enter your name:");
+            if (userName !== null && userName !== "") {
+                alert("Hello, " + userName + "!");
+            } else {
+                alert("No name entered.");
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>JavaScript Dialogs Example</h1>
+    <button onclick="showAlert()">Show Alert</button>
+    <button onclick="showConfirm()">Show Confirm</button>
+    <button onclick="showPrompt()">Show Prompt</button>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change Background Color</title>
+    <script type="text/javascript">
+        function changeBackgroundColor() {
+        	 var currentColor = document.body.style.backgroundColor;
+             if (currentColor === "white" || currentColor === "") {
+                 document.body.style.backgroundColor = "#e0f7fa"; // Light cyan color
+             } else {
+                 document.body.style.backgroundColor = "white"; // Default white color
+             }
+        }
+    </script>
+</head>
+<body>
+    <h2>Welcome to the Login Page</h2>
+
+    <form action="login" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        
+        <input type="submit" value="Login">
+    </form>
+
+    <!-- Button to change background color -->
+    <input type="button" onclick="changeBackgroundColor()" value="change background"></input>
+</body>
+</html>

@@ -1,7 +1,7 @@
  
 <html>
 <head>
-<title>jsuservalidation</title>
+<title>alerts</title>
 <style>
 .error{
 color:red;
@@ -46,6 +46,11 @@ color:red;
 <button onclick="alert(getCookie('username'));">
   Get Cookie
 </button>
- 
+<button onclick="confirm(getCookie('username'));">
+  Get Cookie confirm?
+</button>
+ <button onclick="prompt(getCookie('username'));">
+  Get Cookie prompt
+</button>
 </body>
 </html>

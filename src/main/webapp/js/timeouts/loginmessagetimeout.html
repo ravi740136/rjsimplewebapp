@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login Page</title>
+    <script type="text/javascript">
+  
+        function welcomeMessage() {
+            document.getElementById("welcomeMessage").innerHTML = "Welcome back to the Simple WebApp!";
+        }
+        
+        function showWelcomeMessage() {
+           /* setTimeout(function() {
+               document.getElementById("welcomeMessage").innerHTML = "Welcome to the Simple WebApp!";
+            }, 3000); // 3 seconds delay
+            */
+            setTimeout(welcomeMessage,3000);
+        }
+    </script>
+</head>
+<body onload="showWelcomeMessage()">
+    <h2>Login Page</h2>
+    <div id="welcomeMessage"></div>
+</body>
+</html>

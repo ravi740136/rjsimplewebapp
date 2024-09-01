@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Live Clock</title>
+    <script type="text/javascript">
+    //using anonymous function
+        function startClock() {
+            setInterval(function() {
+                var now = new Date();
+                var timeString = now.toLocaleTimeString();
+                var utcString = now.toUTCString();
+                document.getElementById("clock").innerHTML = timeString;
+                document.getElementById("clock2").innerHTML = utcString;
+            }, 1000); // Update every 1 second
+        }
+        
+        //using function name
+        function runClocks() {
+            setInterval(clocks,1000); // Update every 1 second
+        }
+        
+        function clocks(){
+        	 var now = new Date();
+             var timeString = now.toLocaleTimeString();
+             var utcString = now.toUTCString();
+             document.getElementById("clock").innerHTML = timeString;
+             document.getElementById("clock2").innerHTML = utcString;
+         }
+        
+    </script>
+</head>
+<body onload="runClocks()">
+    <h2>Live Clock</h2>
+    <div id="clock"></div>
+    <p id="clock2">
+</body>
+</html>
