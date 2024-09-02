@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Registration</title>
+    <script type="text/javascript">
+        function submitUserData() {
+      
+            var name = document.getElementById("name").value;
+            var age = document.getElementById("age").value;
+            var email = document.getElementById("email").value;
+
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/simple-webapp/js/json/jsonuser", true); // Asynchronous request
+            xhr.setRequestHeader("Content-Type", "application/json");
+
+            // Capture the response
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                	//To get javascript object from json string
+                    var jsonResponse = JSON.parse(xhr.responseText);
+
+                    // Handling the response
+                    //as it is javascript variable, individual fields and embedded variable fields
+                    //can be accessed
+                    document.getElementById("responseMessage").innerHTML =
+                        "Status: " + jsonResponse.status + "<br>" +
+                        "Message: " + jsonResponse.message + "<br>" +
+                        "Total Users: " + jsonResponse.totalUsers + "<br>" +
+                        "Saved User: " + jsonResponse.savedUser.name + " (Age: " +
+                        jsonResponse.savedUser.age + ", Email: " + jsonResponse.savedUser.email + ")";
+                }
+            };
+            var datajs = {
+                    "name": name,
+                    "age": parseInt(age),
+                    "email": email
+                };
+
+            // Prepare and send the JSON data
+            var jsonData = JSON.stringify({
+                "name": name,
+                "age": parseInt(age),
+                "email": email
+            });
+            console.log("javascript object data: "+datajs.name);
+            console.log("json string data: "+jsonData);
+            xhr.send(jsonData);
+        }
+    </script>
+</head>
+<body>
+    <h2>User Registration</h2>
+    <form onsubmit="event.preventDefault(); submitUserData();">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br><br>
+        <label for="age">Age:</label><br>
+        <input type="text" id="age" name="age"><br><br>
+        <label for="email">Email:</label><br>
+        <input type="text" id="email" name="email"><br><br>
+        <input type="submit" value="Register">
+    </form>
+    <div id="responseMessage"></div>
+</body>
+</html>
