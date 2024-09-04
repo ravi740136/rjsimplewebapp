@@ -56,9 +56,10 @@ public class JSUserServlet extends HttpServlet {
         savedUser.put("email", user.getEmail());
         
         jsonResponse.put("savedUser", savedUser);
+        jsonResponse.put("savedUsers", userList);
 
         // Write the JSON response
-        resp.getWriter().write(jsonResponse.toString());
+        resp.getWriter().println(jsonResponse.toString());
     }
 }
 

@@ -1,0 +1,121 @@
+w<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Overview</title>
+</head>
+<body>
+    <h1>Company Overview</h1>
+    <p id="overview"></p>
+
+    <h2>Find Employee by ID</h2>
+    <form id="employeeForm">
+        <label for="employeeId">Employee ID:</label>
+        <input type="number" id="employeeId" required>
+        <button type="submit">Search</button>
+    </form>
+
+    <div id="employeeDetails"></div>
+
+    <script>
+        // JavaScript object from the previous example
+        const company = {
+            name: "Tech Innovators Inc.",
+            established: 2010,
+            employees: [
+                {
+                    id: 1,
+                    name: "John Doe",
+                    position: "CEO",
+                    skills: ["Leadership", "Management", "Business Strategy"],
+                    contact: {
+                        email: "john.doe@techinnovators.com",
+                        phone: "555-1234"
+                    },
+                    address: {
+                        street: "123 Innovation Way",
+                        city: "Techville",
+                        state: "CA",
+                        zip: "90210"
+                    }
+                },
+                {
+                    id: 2,
+                    name: "Jane Smith",
+                    position: "CTO",
+                    skills: ["JavaScript", "Cloud Computing", "Cybersecurity"],
+                    contact: {
+                        email: "jane.smith@techinnovators.com",
+                        phone: "555-5678"
+                    },
+                    address: {
+                        street: "456 Developer Drive",
+                        city: "Code Town",
+                        state: "NY",
+                        zip: "10001"
+                    }
+                }
+            ],
+            projects: [
+                {
+                    projectId: "P001",
+                    projectName: "AI Development",
+                    deadline: "2024-12-31",
+                    status: "In Progress",
+                    team: ["John Doe", "Jane Smith"],
+                    details: {
+                        budget: 500000,
+                        technologies: ["AI", "Machine Learning", "Python", "TensorFlow"]
+                    }
+                },
+                {
+                    projectId: "P002",
+                    projectName: "Blockchain Integration",
+                    deadline: "2025-03-31",
+                    status: "Planning",
+                    team: ["Jane Smith"],
+                    details: {
+                        budget: 300000,
+                        technologies: ["Blockchain", "Smart Contracts", "Ethereum"]
+                    }
+                }
+            ],
+            companyOverview: function () {
+                //return `${this.name} was established in ${this.established} and currently has ${this.employees.length} employees working on various projects.`;
+                return this.name+ " was established in "+ this.established +"  and currently has: "+ this.employees.length + " employees working on various projects.";
+            },
+            findEmployeeById: function (id) {
+                return this.employees.find(employee => employee.id === id);
+            }
+        };
+
+        // Display the company overview
+        document.getElementById('overview').textContent = company.companyOverview();
+
+        // Handle form submission to search for an employee
+        document.getElementById('employeeForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const employeeId = parseInt(document.getElementById('employeeId').value);
+            const employee = company.findEmployeeById(employeeId);
+
+            const employeeDetailsDiv = document.getElementById('employeeDetails');
+            employeeDetailsDiv.innerHTML = '';
+
+            if (employee) {
+                employeeDetailsDiv.innerHTML = `
+                    <h3>Employee Details</h3>
+                    <p><strong>Name:</strong> ${employee.name}</p>
+                    <p><strong>Position:</strong> ${employee.position}</p>
+                    <p><strong>Skills:</strong> ${employee.skills.join(', ')}</p>
+                    <p><strong>Email:</strong> ${employee.contact.email}</p>
+                    <p><strong>Phone:</strong> ${employee.contact.phone}</p>
+                    <p><strong>Address:</strong> ${employee.address.street}, ${employee.address.city}, ${employee.address.state} ${employee.address.zip}</p>
+                `;
+            } else {
+                employeeDetailsDiv.innerHTML = '<p>No employee found with that ID.</p>';
+            }
+        });
+    </script>
+</body>
+</html>

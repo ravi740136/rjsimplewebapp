@@ -42,7 +42,7 @@
                 "age": parseInt(age),
                 "email": email
             });
-            console.log("javascript object data: "+datajs.name);
+            console.log("javascript object data: "+datajs.age);
             console.log("json string data: "+jsonData);
             xhr.send(jsonData);
         }
@@ -52,9 +52,9 @@
     <h2>User Registration</h2>
     <form onsubmit="event.preventDefault(); submitUserData();">
         <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name"><br><br>
+        <input type="text" id="name" name="name" required><br><br>
         <label for="age">Age:</label><br>
-        <input type="text" id="age" name="age"><br><br>
+        <input type="text" id="age" name="age" required><br><br>
         <label for="email">Email:</label><br>
         <input type="text" id="email" name="email"><br><br>
         <input type="submit" value="Register">
