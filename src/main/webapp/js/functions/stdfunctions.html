@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Functions Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .result {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f9f9f9;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+    <h1>JavaScript Standard Functions Test</h1>
+
+    <div class="result" id="stringTest"></div>
+    <div class="result" id="numberTest"></div>
+    <div class="result" id="arrayTest"></div>
+    <div class="result" id="objectTest"></div>
+    <div class="result" id="dateTest"></div>
+    <div class="result" id="mathTest"></div>
+     <div class="result" id="objecttostring"></div>
+
+    <script>
+        // String Functions Test
+        function testStringFunctions() {
+            let str = "Hello World";
+            let result = `
+                Original String: ${str} <br>
+                Char at 1: ${str.charAt(1)} <br>
+                Includes "World": ${str.includes("World")} <br>
+                Uppercase: ${str.toUpperCase()} <br>
+                Substring (1, 5): ${str.substring(1, 5)} <br>
+                Trimmed: ${'   JS is fun!   '.trim()}
+            `;
+            document.getElementById("stringTest").innerHTML = `<strong>String Functions:</strong><br>${result}`;
+        }
+
+        // Number Functions Test
+        function testNumberFunctions() {
+            let num = 123.456;
+            let result = `
+                Original Number: ${num} <br>
+                Fixed to 2 decimals: ${num.toFixed(2)} <br>
+                Exponential form: ${num.toExponential(2)} <br>
+                Parse Int from "42": ${parseInt("42")} <br>
+                Parse Float from "42.56": ${parseFloat("42.56")}
+            `;
+            document.getElementById("numberTest").innerHTML = `<strong>Number Functions:</strong><br>${result}`;
+        }
+
+        // Array Functions Test
+        function testArrayFunctions() {
+            let arr = [1, 2, 3, 4];
+            let result = `
+                Original Array: [${arr}] <br>
+                Pushed 5: [${arr.push(5)}, [${arr}]] <br>
+                Popped Value: ${arr.pop()}, Array: [${arr}] <br>
+                Filter > 2: [${arr.filter(x => x > 2)}] <br>
+                Mapped x2: [${arr.map(x => x * 2)}]
+            `;
+            document.getElementById("arrayTest").innerHTML = `<strong>Array Functions:</strong><br>${result}`;
+        }
+
+        // Object Functions Test
+        function testObjectFunctions() {
+        	let obj2 = {
+        			  name: "Alice",
+        			  age: 25,
+        			  toString() {
+        			    return `Name: ${this.name}, Age: ${this.age}`;
+        			  }
+        			};
+            let obj = { name: "John", age: 30 };
+            //Object.freeze(obj);   
+            obj.name="ravi"; 
+            let result = `
+        
+                Object: ${JSON.stringify(obj)} <br>
+                Keys: ${Object.keys(obj)} <br>
+                Values: ${Object.values(obj)} <br>
+              Entries: ${JSON.stringify(Object.entries(obj))} <br> 
+              
+                Entries: ${Object.entries(obj)} <br>
+                Object before freeze (can modify): ${JSON.stringify(obj)}<br>
+               
+            `;
+            //Object after freeze (cannot modify): ${JSON.stringify(obj)}<br>
+            document.getElementById("objectTest").innerHTML = `<strong>Object Functions:</strong><br>${result}`;
+            document.getElementById("objecttostring").innerHTML = `<strong>Object To String:</strong><br>${obj2}`;
+        }
+
+        // Date Functions Test
+        function testDateFunctions() {
+            let date = new Date();
+            let result = `
+                Current Date: ${date} <br>
+                Year: ${date.getFullYear()} <br>
+                Month (0-indexed): ${date.getMonth()} <br>
+                Day of the Month: ${date.getDate()} <br>
+                Time in milliseconds: ${date.getTime()}
+            `;
+            document.getElementById("dateTest").innerHTML = `<strong>Date Functions:</strong><br>${result}`;
+        }
+
+        // Math Functions Test
+        function testMathFunctions() {
+            let result = `
+                Math Round (4.6): ${Math.round(4.6)} <br>
+                Math Floor (4.6): ${Math.floor(4.6)} <br>
+                Math Ceil (4.1): ${Math.ceil(4.1)} <br>
+                Random number (0 to 1): ${Math.random()} <br>
+                Max of [1, 2, 3]: ${Math.max(1, 2, 3)} <br>
+                Min of [1, 2, 3]: ${Math.min(1, 2, 3)}
+            `;
+            document.getElementById("mathTest").innerHTML = `<strong>Math Functions:</strong><br>${result}`;
+        }
+
+        // Run all tests
+        testStringFunctions();
+        testNumberFunctions();
+        testArrayFunctions();
+        testObjectFunctions();
+        testDateFunctions();
+        testMathFunctions();
+    </script>
+</body>
+</html>
